@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SearchBox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+    using("searchbox", function () {
+        $('#ss').searchbox({
+            searcher:function(value,name){
+                alert(value + "," + name)
+            },
+            menu:'#mm',
+            prompt:'Please Input Value'
+        });
+    });
+
+</script>
+<body>
+    <input id="ss" style="width: 500px;" name="search">
+    <div id="mm" style="width:120px">
+        <div data-options="name:'all',iconCls:'icon-ok'">All News</div>
+        <div data-options="name:'sports'">Sports News</div>
+    </div>
+</body>
+</html>
