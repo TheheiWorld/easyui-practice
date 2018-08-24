@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProgressBar</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+    using("progressbar", function () {
+        $('#progress').progressbar({
+            value: 60,
+            onChange: function(n, o){
+                alert(n);
+            }
+        });
+    });
+    
+    function change() {
+        var value = $('#progress').progressbar('getValue');
+        if (value < 100){
+            value += Math.floor(Math.random() * 10);
+            $('#progress').progressbar('setValue', value);
+        }
+    }
+
+</script>
+<body>
+    <div id="progress" style="width:400px;"></div>
+    <button onclick="change()">更新</button>
+</body>
+</html>
