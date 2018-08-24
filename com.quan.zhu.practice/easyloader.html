@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Easyloader</title>
+</head>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+
+    // window.using = easyloader.load
+    using("messager", function () {
+        alert("加载成功");
+        $("#alertBtn").click(function () {
+            $.messager.alert('Warning', 'The warning message');
+        });
+    });
+
+</script>
+<body>
+    <a id="alertBtn" class="easyui-linkbutton">Easyloader</a>
+</body>
+</html>

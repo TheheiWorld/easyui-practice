@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $.parser.auto = false;
+    function parserMe() {
+        $.parser.parse($('#progress').parent());
+    }
+    
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Parser</title>
+</head>
+<body>
+    <div id="content" class="easyui-panel" style="width:500px;height:200px;padding:10px;"
+         title="My Panel" iconCls="icon-save" collapsible="true">
+        The panel content
+        <div id="progress" class="easyui-progressbar"></div>
+    </div>
+    <button onclick="parserMe()">Parser</button>
+</body>
+</html>
