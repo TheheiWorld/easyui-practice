@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resizable</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+    using("pagination", function () {
+        $('#page').pagination({
+            total:2000,
+            pageSize:10,
+            buttons : [
+                {
+                    iconCls:'icon-add',
+                    handler:function(){
+                        alert('add')
+                    }
+                },
+                '-',
+                {
+                    iconCls:'icon-save',
+                    handler:function(){
+                        alert('save')
+                    }
+                }
+            ],
+            layout: ["list", "sep", "first", "prev", "sep", "manual", "sep", "next", "last", "sep", "refresh", "info"]
+        });
+    });
+
+</script>
+<body>
+    <div id="page" style="background:#efefef;border:1px solid #ccc;"></div>
+</body>
+</html>
