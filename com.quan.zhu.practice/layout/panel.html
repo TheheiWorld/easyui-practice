@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+    using("panel", function () {
+        $('#panel').panel({
+            width: 500,
+            height: 150,
+            title: 'My Panel',
+            halign : "top",
+            iconCls : "zhu-panel",
+//            content : "quan",
+            titleDirection : "up",
+            collapsible : true,
+//            collapsed : true,
+            minimizable : true,
+            maximizable : true,
+            closable : true,
+//            header : $('#zhu-header'),
+            openAnimation : "slide",
+            closeDuration : 2000,
+            closeAnimation : "fade",
+            closeDuration : 1000,
+            tools: [{
+                iconCls: 'icon-add',
+                handler: function () {
+                    alert('new')
+                }
+            }, {
+                iconCls: 'icon-save',
+                handler: function () {
+                }
+            }]
+
+        });
+    });
+
+    function openPanel() {
+        $('#panel').panel('open');
+    }
+
+
+
+</script>
+<style type="text/css">
+    .zhu-panel {
+        background-color: red;
+    }
+</style>
+<body>
+<div id="panel" style="padding:10px;">
+    <p>panel content.</p>
+    <p>panel content.</p>
+</div>
+<button onclick="openPanel()">打开</button>
+</body>
+</html>
