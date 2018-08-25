@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToolTip</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+    using("tooltip", function () {
+        $('#tool').tooltip({
+            position: 'right',
+            content: '<span style="color:#fff">This is the tooltip message.</span>',
+            onShow: function(){
+                $(this).tooltip('tip').css({
+                    backgroundColor: '#666',
+                    borderColor: '#666'
+                });
+            },
+            onPosition : function (left, top) {
+                console.log(left + " : " + top);
+            },
+            trackMouse : true,
+            deltaX : 20,
+            showEvent : "mouseenter"
+        });
+    });
+
+</script>
+<body>
+    <a id="tool" href="javascript:void(0)">Click here</a>
+</body>
+</html>
