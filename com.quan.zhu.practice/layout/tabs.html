@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabs</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+    using("tabs", function () {
+        $('#tabs').tabs({
+            border:true,
+//            plain : true,
+            scrollIncrement : 100,
+            scrollDuration : 2000,
+            selected : 1,
+            pill : true,
+            onSelect:function(title){
+//                alert(title+' is selected');
+            }
+        });
+    });
+    
+    function addPanel() {
+        $('#tabs').tabs('add',{
+            title:'New Tab',
+            content:'Tab Body',
+            closable:true,
+            tools:[{
+                iconCls:'icon-mini-refresh',
+                handler:function(){
+                    alert('refresh');
+                }},
+                {
+                iconCls: 'icon-add',
+                handler: function () {
+                    alert('添加!');
+                }
+            }]
+        });
+    }
+
+    function showPanelInfo() {
+        var tab =  $('#tabs').tabs('getSelected');
+        console.log(tab);
+        var option =  tab.panel('options').tab;
+        console.group(option);
+    }
+
+</script>
+<body>
+    <div id="tabs" style="width:400px;height:250px;">
+        <div title="Tab1" style="padding:20px;display:none;">
+            tab1
+        </div>
+        <div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">
+            tab2
+            <div style="width: 100px; height: 600px; background-color: red;"></div>
+            content
+        </div>
+        <div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="display:none;">
+            tab3
+        </div>
+        <div title="Tab4" style="padding:20px;display:none;">
+            tab1
+        </div>
+        <div title="Tab5" style="padding:20px;display:none;">
+            tab1
+        </div>
+        <div title="Tab6" style="padding:20px;display:none;">
+            tab1
+        </div>
+        <div title="Tab7" style="padding:20px;display:none;">
+            tab1
+        </div>
+        <div title="Tab8" style="padding:20px;display:none;">
+            tab1
+        </div>
+    </div>
+    
+    <button onclick="addPanel()">add</button>
+    <button onclick="showPanelInfo()">show info</button>
+</body>
+</html>
