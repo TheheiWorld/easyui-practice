@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#container').layout({
+            collapsedContent: function(title){
+                alert(title);
+                var region = $(this).panel('options').region;
+                if (region == 'north' || region == 'south'){
+                    return title;
+                } else {
+                    return '<div class="mytitle">xxxx</div>';
+                }
+            },
+            onCollapse : function (region) {
+                console.log("collapse : " + region);
+            },
+            onExpand : function (region) {
+                console.log("expand : " + region);
+            },
+            onAdd : function (region) {
+                console.log("add : " + region);
+            }
+        });
+        $('#container').layout('add',{
+            hideCollapsedContent : false,
+            region: 'west',
+            expandMode : 'dock',
+//            collapsedSize : 28,
+//            hideExpandTool : true,
+//            iconCls : "icon-ok",
+            width: 180,
+            title: 'West Title',
+            split: true,
+            tools: [{
+                iconCls:'icon-add',
+                handler:function(){alert('add')}
+            },{
+                iconCls:'icon-remove',
+                handler:function(){alert('remove')}
+            }]
+        });
+        $('#container').layout('collapse','west');
+    });
+
+</script>
+<body>
+    <div id="container" style="width:600px;height:600px;left: 300px; top: 200px;">
+        <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+        <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
+        <div data-options="region:'east',title:'East',split:true" style="width:100px;"></div>
+        <!--<div data-options="region:'west',title:'West',split:true" style="width:100px;"></div>-->
+        <div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;"></div>
+    </div>
+</body>
+</html>
