@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accordion</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../easyloader.js"></script>
+<script type="text/javascript">
+
+    easyloader.locale = "zh_CN";
+    using("accordion", function () {
+        $('#accordion').accordion({
+            animate : true,
+            multiple : true,
+            halign : 'top'
+        });
+    });
+    
+    function refresh() {
+        var pp = $('#accordion').accordion('getSelected');
+        if (pp){
+            pp.panel('refresh','panel.html');
+        }
+    }
+
+    function add() {
+        var panels =  $('#accordion').accordion('panels');
+        if (panels.length >= 5) {
+            alert(panels.length);
+            return;
+        }
+        console.log(panels);
+        $('#accordion').accordion('add', {
+            title : panels.length + 1,
+            content : 'add',
+            selected : false
+        });
+    }
+
+    function remove() {
+        var panels =  $('#accordion').accordion('panels');
+        if (panels.length == 0) {
+            alert(panels.length);
+            return;
+        }
+        $('#accordion').accordion('remove', 0);
+    }
+
+</script>
+<body>
+    <div id="accordion" class="easyui-accordion" style="width:1000px;height:600px;overflow: auto;">
+        <div title="Title1" data-options="iconCls:'icon-save'" style="padding:10px;">
+            <h3 style="color:#0099FF;">Accordion for jQuery</h3>
+            <p>Accordion is a part of easyui framework for jQuery.
+                It lets you define your accordion component on web page more easily.</p>
+        </div>
+        <div title="Title2" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">
+            content2
+        </div>
+        <div title="Title3">
+            content3
+        </div>
+    </div>
+    <button onclick="refresh()">刷新</button>
+    <button onclick="add()">添加</button>
+    <button onclick="remove()">移除</button>
+</body>
+</html>
