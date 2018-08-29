@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sidemenu</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var data = [{
+            text: 'Item1',
+            iconCls: 'icon-sum',
+            state: 'open',
+            children: [{
+                text: 'Option1'
+            },{
+                text: 'Option2'
+            },{
+                text: 'Option3',
+                children: [{
+                    text: 'Option31'
+                },{
+                    text: 'Option32'
+                }]
+            }]
+        },{
+            text: 'Item2',
+            iconCls: 'icon-more',
+            children: [{
+                text: 'Option4',
+                iconCls: "icon-sum",
+            },{
+                text: 'Option5'
+            },{
+                text: 'Option6'
+            }]
+        }];
+        $('#sidemenu').sidemenu({
+            data : data,
+//            border : false,
+            floatMenuPosition : "left",
+            floatMenuWidth : 200,
+            multiple : false
+//            animate : false
+        });
+    });
+    
+    function expand() {
+        $('#sidemenu').sidemenu('expand');
+        $('#sidemenu').sidemenu('resize', {
+            width : 200
+        });
+    }
+
+    function collapse() {
+        $('#sidemenu').sidemenu('collapse');
+        $('#sidemenu').sidemenu('resize', {
+            width : 50
+        });
+    }
+
+</script>
+<body>
+    <div id="sidemenu" style="width:200px;"></div>
+    <button onclick="collapse()">收缩</button>
+    <button onclick="expand()">展开</button>
+</body>
+</html>
