@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Linkbutton</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#blank').linkbutton({
+            iconCls: 'icon-blank',
+            toggle : true
+//            plain : true
+        });
+
+        $('#add').linkbutton({
+            iconCls: 'icon-add'
+        });
+
+        $('#edit').linkbutton({
+            iconCls: 'icon-edit'
+        });
+
+        $('#clear').linkbutton({
+            iconCls: 'icon-clear'
+        });
+
+        $('#remove').linkbutton({
+            iconCls: 'icon-remove'
+        });
+
+        $('#save').linkbutton({
+            iconCls: 'icon-save'
+        });
+
+        $('#cut').linkbutton({
+            iconCls: 'icon-cut'
+        });
+
+        $('#ok').linkbutton({
+            iconCls: 'icon-ok'
+        });
+
+        $('#no').linkbutton({
+            iconCls: 'icon-no'
+        });
+    });
+    
+    function select() {
+        $('#blank').linkbutton('select');
+    }
+
+    function unselect() {
+        $('#blank').linkbutton('unselect');
+    }
+
+</script>
+<body>
+    <a id="blank" href="#">blank</a>
+    <a id="add" href="#" onclick="select()">add</a>
+    <a id="edit" href="#" onclick="unselect()">edit</a>
+    <a id="clear" href="#">clear</a>
+    <a id="remove" href="#">remove</a>
+    <a id="save" href="#">save</a>
+    <a id="cut" href="#">cut</a>
+    <a id="ok" href="#">ok</a>
+    <a id="no" href="#">no</a>
+</body>
+</html>
