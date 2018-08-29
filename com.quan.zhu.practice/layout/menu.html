@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#mm').menu({
+            inline : false,
+            duration: 1000,
+            hideOnUnhover: false,
+            onShow: function () {
+                alert('show');
+            }
+        });
+    });
+
+    function add() {
+        $('#mm').menu('appendItem', {
+            id : "open",
+            text: 'Open',
+            iconCls: 'icon-ok',
+            href : "http://m.maitao.com",
+            onclick: function () {
+                alert('New Item')
+            }
+        });
+        $('#mm').menu('appendItem', {
+            separator: true
+        });
+        var item = $('#mm').menu('findItem', 'Open');
+        console.log(item);
+        $('#mm').menu('appendItem', {
+            id : "open-excel",
+            parent: item.target,
+            text: 'Open Excel',
+            iconCls: 'icon-excel',
+            onclick: function () {
+                alert('Open Excel')
+            }
+        });
+        $('#mm').menu('show', {
+            left: 200,
+            top: 100
+        });
+    }
+
+    function getOptions() {
+        var options = $('#mm').menu('options');
+        console.log(options);
+    }
+
+    function getItem() {
+        var open = $('#open');
+        console.log(open);
+        var m = $('#open')[0];
+        console.log(m);
+        var item = $('#mm').menu('getItem', m);
+        console.log(item);
+    }
+
+</script>
+<body>
+    <div id="mm" style="width:120px;"></div>
+    <button onclick="add()">add</button>
+    <button onclick="getOptions()">Options</button>
+    <button onclick="getItem()">getItem</button>
+</body>
+</html>
