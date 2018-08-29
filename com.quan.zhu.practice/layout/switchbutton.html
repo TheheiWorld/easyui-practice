@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SwitchButton</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#switchbutton').switchbutton({
+            checked: true,
+            handleWidth : 100,
+            reversed : true,
+//            handleText : "中界限",
+            value : "demo",
+            onChange: function(checked){
+                console.log(checked);
+            }
+        })
+    });
+
+    function readonly() {
+        $('#switchbutton').switchbutton({
+            readonly : true
+        })
+    }
+
+</script>
+<body>
+    <input id="switchbutton" style="width:200px;height:30px">
+    <button onclick="readonly()">readonly</button>
+</body>
+</html>
