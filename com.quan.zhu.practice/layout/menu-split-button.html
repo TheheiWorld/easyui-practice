@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Linkbutton</title>
+    <title>Menu-Split-Button</title>
 </head>
 <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
 <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
@@ -14,16 +14,27 @@
         $('#mb').menubutton({
             plain : false,
             iconCls: 'icon-edit',
-            menu: '#mm',
-            menuAlign : 'left',
-            showEvent : "click"
+            menu: '#menu',
+            menuAlign : 'left'
+//            showEvent : "click"
+        });
+
+        $('#sb').splitbutton({
+            iconCls: 'icon-ok',
+            plain : false,
+            menu: '#split'
         });
     });
 
 </script>
 <body>
     <a href="javascript:void(0)" id="mb">Edit</a>
-    <div id="mm" style="width:150px">
+    <div id="menu" style="width:150px">
+        ...
+    </div>
+
+    <a href="javascript:void(0)" id="sb" onclick="javascript:alert('ok')">Ok</a>
+    <div id="split" style="width:100px;">
         ...
     </div>
 </body>
