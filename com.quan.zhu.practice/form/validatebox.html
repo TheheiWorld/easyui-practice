@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ValidateBox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#email').validatebox({
+            required: true,
+            validateOnBlur : true,
+            validType: 'email',
+            tipPosition : 'right',
+            onBeforeValidate : function () {
+                console.log('start …………');
+            },
+            onValidate : function (vaild) {
+                console.log(vaild);
+            }
+        });
+
+        $.extend($.fn.validatebox.defaults.rules, {
+            equals: {
+                validator: function(value,param){
+                    return value == $(param[0]).val();
+                },
+                message: 'Field do not match.'
+            }
+        });
+    });
+
+</script>
+<body>
+    <input id="email">
+
+    <input id="pwd" name="pwd" type="password" class="easyui-validatebox" data-options="required:true">
+    <input id="rpwd" name="rpwd" type="password" class="easyui-validatebox"
+           required="required" validType="equals['#pwd']">
+</body>
+</html>
