@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Textbox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#textbox').textbox({
+            buttonText:'search ',
+            iconCls:'icon-man',
+            iconAlign:'left',
+//            multiline : true,
+            validType : "email",
+            prompt : "请输入邮箱",
+            type : "password",
+            labelWidth : 60,
+            labelAlign : "right",
+            buttonIcon : "icon-search",
+            icons: [{
+                iconCls:'icon-add',
+                handler: function(e){
+                    $(e.data.target).textbox('setValue', 'Something added!');
+                }
+            },{
+                iconCls:'icon-remove',
+                handler: function(e){
+                    $(e.data.target).textbox('clear');
+                }
+            }],
+            onChange : function (n, o) {
+                alert("new : " + n + "; old :" + o);
+            },
+            onClickIcon : function (index) {
+                alert(index);
+            }
+        });
+
+        $('#textbox').textbox({
+            label: 'Name:'
+        });
+    });
+
+</script>
+<body>
+    <input id="textbox" type="text" style="width:300px">
+</body>
+</html>
