@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#ff').form({
+            url: "",
+//            ajax : false,
+            iframe : false,
+            onSubmit: function () {
+                console.log("submit …………");
+            },
+            onProgress : function (percent) {
+                console.log(percent);
+            },
+            onChange : function (target) {
+                console.log(target);
+            },
+            success: function (data) {
+                console.log(data);
+                $.messager.progress('close');
+            }
+        });
+    });
+
+    function save() {
+        $.messager.progress();
+        $('#ff').submit();
+    }
+
+</script>
+<body>
+<form id="ff" method="get">
+    <div>
+        <label for="name">Name:</label>
+        <input class="easyui-validatebox" type="text" name="name" data-options="required:true"/>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'"/>
+    </div>
+    <!--提交了两次-->
+    <!--<button onclick="save()">提交</button>-->
+    <input type="button" onclick="save()" value="提交">
+</form>
+</body>
+</html>
