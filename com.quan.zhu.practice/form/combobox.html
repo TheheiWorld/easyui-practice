@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combobox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var data =  [{
+            "id":1,
+            "text":"text1",
+            "groupId" : "001"
+        },{
+            "id":2,
+            "text":"text2",
+            "groupId" : "001"
+        },{
+            "id":3,
+            "text":"text3",
+            "selected":true,
+            "groupId" : "002"
+        },{
+            "id":4,
+            "text":"text4",
+            "groupId" : "002"
+        },{
+            "id":5,
+            "text":"text5",
+            "groupId" : "002"
+        }];
+
+        $('#cc').combobox({
+            data : data,
+            groupField : "groupId",
+            valueField:'id',
+            textField:'text',
+            multiple : true,
+            showItemIcon : true,
+            groupPosition : "sticky",
+            groupFormatter : function (group) {
+                return '<span style="color:red">' + group + '</span>';
+            },
+            onBeforeLoad : function (param) {
+                // 是 请求参数
+                alert("init");
+            },
+            onClick : function (record) {
+                console.log(record);
+            }
+        });
+    });
+
+</script>
+<body>
+    <input id="cc" name="dept">
+</body>
+</html>

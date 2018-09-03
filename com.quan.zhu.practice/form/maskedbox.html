@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MaskedBox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#mask').maskedbox({
+            // 强制输入字符
+            mask: 'aaa aaa aaa'
+//            promptChar : "mask"
+        });
+    });
+
+    function get() {
+        var value = $('#mask').maskedbox('getValue');
+        alert(value);
+    }
+
+</script>
+<body>
+    <input id="mask" type="text" style="width:300px">
+    <button onclick="get()">get Value</button>
+</body>
+</html>

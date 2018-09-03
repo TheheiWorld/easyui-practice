@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combotree</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var data =  [{
+            "id":1,
+            "text":"text1",
+            children: [{
+                id: 11,
+                text: 'Java'
+            },{
+                id: 12,
+                text: 'C++'
+            }]
+        },{
+            "id":2,
+            "text":"text2",
+            children: [{
+                id: 13,
+                text: 'Java'
+            },{
+                id: 14,
+                text: 'C++'
+            }]
+        },{
+            "id":3,
+            "text":"text3"
+        },{
+            "id":4,
+            "text":"text4"
+        },{
+            "id":5,
+            "text":"text5"
+        }];
+
+        $('#cc').combotree({
+            data : data,
+            valueField:'id',
+            textField:'text',
+            multiple : true,
+            showItemIcon : true,
+            groupPosition : "sticky",
+            editable : true,
+            groupFormatter : function (group) {
+                return '<span style="color:red">' + group + '</span>';
+            },
+            onBeforeLoad : function (param) {
+                // 是 请求参数
+                alert("init");
+            },
+            onClick : function (record) {
+                console.log(record);
+            }
+        });
+    });
+
+    function getTree() {
+        var tree = $('#cc').combotree('tree');
+        console.log(tree);
+        var n = tree.tree('getSelected');
+        console.group(n);
+        if (n) {
+            alert(n.text);
+        }
+    }
+
+</script>
+<body>
+    <input id="cc" name="dept">
+    <button onclick="getTree()">tree</button>
+</body>
+</html>

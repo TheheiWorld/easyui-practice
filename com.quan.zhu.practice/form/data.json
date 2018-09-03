@@ -1,0 +1,18 @@
+[
+  {
+    "code" : 1,
+    "name" : "name1",
+    "size" : 10,
+    "date" : "2018-01-01",
+    "children" : [
+      {
+        "code" : 3,
+        "name" : "name3"
+      }
+    ]
+  },
+  {
+    "code" : 2,
+    "name" : "name2"
+  }
+]
