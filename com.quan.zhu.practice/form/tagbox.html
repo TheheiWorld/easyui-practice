@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TagBox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#tb').tagbox({
+            valueField:'code',
+            textField:'name',
+            url : "data.json",
+            hasDownArrow : true,
+            label: 'Add a tag',
+            onClickTag : function (value) {
+                console.log(value);
+            },
+            onSelect : function (record) {
+                console.log(record);
+            },
+            onSelect : function (record) {
+                console.log(record);
+            }
+        });
+    });
+    
+    function getSelect() {
+        var options = $('#tb').tagbox('options');
+        var text = $('#tb').tagbox('getData');
+        var text1 = $('#tb').tagbox('getValues');
+
+        console.log(options);
+        console.log(text);
+        console.log(text1);
+
+        for (var i = 0; i < text.length; i ++) {
+            if (text1.includes(text[i].code.toString())) {
+                console.log("exist");
+            }
+        }
+    }
+
+</script>
+<body>
+    <input id="tb" type="text" style="width:300px">
+    <button onclick="getSelect()">getSelected</button>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DateBox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+//        $.fn.datebox.defaults.formatter = function(date){
+//            var y = date.getFullYear();
+//            var m = date.getMonth()+1;
+//            var d = date.getDate();
+//            return m+':'+d+':'+y;
+//        };
+
+        $('#datebox').datebox({
+//            required:true
+            onSelect: function(date){
+                console.log(date);
+                alert(date.getFullYear()+":"+(date.getMonth()+1)+":"+date.getDate());
+            }
+        });
+
+        var buttons = $.extend([], $.fn.datebox.defaults.buttons);
+        buttons.splice(1, 0, {
+            text: 'MyBtn',
+            handler: function(target){
+                alert('click MyBtn');
+            }
+        });
+        $('#datebox').datebox({
+            buttons: buttons
+        });
+
+        $('#dt').datetimebox({
+            width : 250,
+            panelWidth : 300,
+//            value: '3/4/2010 2:3',
+            required: true,
+            showSeconds: false
+        });
+
+        $('#dtime').datetimespinner({
+            //...
+        })
+    });
+
+    function getCalendar() {
+        var c = $('#datebox').datebox('calendar');
+        console.log(c);
+        var value = $('#datebox').datebox('getValue');
+        console.log(value);
+    }
+
+</script>
+<body>
+    <input id="datebox" type="text">
+    <button onclick="getCalendar()">calendar</button>
+
+    <input id="dt" type="text" name="birthday">
+
+    <input id="dtime" type="text" style="width:300px">
+
+
+</body>
+</html>

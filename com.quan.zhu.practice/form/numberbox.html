@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NumberBox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#nn').numberbox({
+            min:0,
+            precision:2,
+            prefix : "$",
+            groupSeparator : ",",
+            filter : function (e) {
+//                console.log(e.key);
+            },
+            onChange : function (n, o) {
+                console.log("n : " + n);
+                console.log("o : " + o);
+            }
+        });
+    });
+
+</script>
+<body>
+    <input type="text" id="nn">
+</body>
+</html>

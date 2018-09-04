@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DateBox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+
+        $('#cc').calendar({
+            current:new Date(),
+            weeks : ['日','一','二','三','四','五','六'],
+            formatter: function(date){
+                return date.getDate() + "<br>销量<br>价格<br>订单数" + "<div id = 'mm'></div>";
+            },
+            onSelect : function (date) {
+                console.log(date);
+            }
+        });
+    });
+    
+    function move() {
+        $('#cc').calendar('moveTo', new Date(2012, 6, 1));
+    }
+
+</script>
+<body>
+    <div id="cc" style="width:700px;height:500px;"></div>
+    <button onclick="move()">move</button>
+</body>
+</html>
