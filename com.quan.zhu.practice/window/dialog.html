@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#dd').dialog({
+            title: 'My Dialog',
+            width: 400,
+            height: 200,
+            closed: false,
+            cache: false,
+            modal: true,
+            resizable : true,
+            toolbar:[{
+                text:'Edit',
+                iconCls:'icon-edit',
+                handler:function(){alert('edit')}
+            },{
+                text:'Help',
+                iconCls:'icon-help',
+                handler:function(){alert('help')}
+            }],
+            buttons:[{
+                text:'Save',
+                handler:function(){
+
+                }
+            },{
+                text:'Close',
+                handler:function(){
+
+                }
+            }]
+        })
+    });
+
+</script>
+<body>
+    <div id="dd">Dialog Content.</div>
+</body>
+</html>

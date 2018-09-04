@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messager</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $.messager.confirm('Confirm','Are you sure you want to delete record?',function(r){
+            if (r){
+                alert('ok');
+                $.messager.alert('Warning','The warning message');
+            } else {
+                $.messager.show({
+                    title:'My Title',
+                    msg:'Message will be closed after 4 seconds.',
+                    timeout:5000,
+                    showType:'slide',
+                    style:{
+                        right:'',
+                        top:document.body.scrollTop+document.documentElement.scrollTop,
+                        bottom:''
+                    }
+                });
+
+                $.messager.prompt({
+                    title: 'Prompt',
+                    msg: 'Please enter your name:',
+                    fn: function(r){
+                        if (r){
+                            alert('Your name is:' + r);
+                        }
+                    }
+                });
+                $.messager.progress();
+                $.messager.progress('bar');
+            }
+        });
+    });
+
+</script>
+<body>
+</body>
+</html>
