@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#ss').slider({
+            mode: 'h',
+            min : 0,
+            max : 100,
+            range : true,
+            showTip : true,
+            tipFormatter: function(value){
+                return value + '%';
+            }
+        });
+    });
+
+    function getValueSlider() {
+        console.log($('#ss').slider('getValue'));
+        console.log($('#ss').slider('getValues'));
+    }
+
+</script>
+<body style="padding: 20px;">
+    <div id="ss" style="height:200px; margin: 20px;width: 200px;"></div>
+    <button onclick="getValueSlider()">value</button>
+</body>
+</html>

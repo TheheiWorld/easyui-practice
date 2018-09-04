@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filebox</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#fb').filebox({
+            buttonText: '选择文件',
+            buttonAlign: 'right',
+            buttonIcon : "icon-add",
+            accept : "image/*",
+            multiple : true
+        })
+    });
+
+    function getFiles() {
+        var files = $('#fb').filebox('files');
+        console.log(files);
+    }
+
+</script>
+<body style="padding: 20px;">
+    <input id="fb" type="text" style="width:300px">
+    <button onclick="getFiles()">file</button>
+</body>
+</html>
