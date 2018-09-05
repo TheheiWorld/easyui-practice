@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#tree').tree({
+            url:'tree.json',
+            animate : true,
+            onlyLeafCheck : false,
+            lines : true,
+            dnd : true,
+            checkbox : function (node) {
+                return true;
+            },
+            onClick: function(node){
+                $(this).tree('beginEdit',node.target);
+            },
+            onContextMenu: function(e, node){
+                e.preventDefault();
+                $('#tree').tree('select', node.target);
+                $('#mm').menu('show', {
+                    left: e.pageX,
+                    top: e.pageY
+                });
+            }
+        });
+    })
+    
+    function collapseAll() {
+        var data =  $('#tree').tree('getRoots');
+        console.log(data);
+        $('#tree').tree('collapseAll');
+    }
+
+    function expandAll() {
+        $('#tree').tree('expandAll');
+    }
+
+    function append() {
+        var selected = $('#tree').tree('getSelected');
+        $('#tree').tree('append', {
+            parent: selected.target,
+            data: [{
+                id: 23,
+                text: 'node23'
+            },{
+                text: 'node24',
+                state: 'closed',
+                children: [{
+                    text: 'node241'
+                },{
+                    text: 'node242'
+                }]
+            }]
+        });
+    }
+
+</script>
+<body>
+    <ul id="tree"></ul>
+    <div id="mm" class="easyui-menu" style="width:120px;">
+        <div onclick="append()" data-options="iconCls:'icon-add'">Append</div>
+        <div onclick="remove()" data-options="iconCls:'icon-remove'">Remove</div>
+    </div>
+    <button onclick="collapseAll()">收缩</button>
+    <button onclick="expandAll()">展开</button>
+    <button onclick="append()">添加</button>
+</body>
+</html>

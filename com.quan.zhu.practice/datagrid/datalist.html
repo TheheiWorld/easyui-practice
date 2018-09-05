@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Datalist</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#dl').datalist({
+            width : 300,
+            height : 400,
+            title : "datalist",
+            url: 'data.json',
+            valueField : "code",
+            textField : "name",
+            singleSelect: false,
+            checkbox: true,
+            showFooter : true,
+            showHeader : true,
+            fitColumns : false,
+            collapsible: true,
+            lines: true,
+            toolbar: [{
+                iconCls: 'icon-add',
+                handler: function () {
+                }
+            }, '-', {
+                iconCls: 'icon-remove',
+                handler: function () {
+                }
+            }],
+        });
+
+        $('#dl').datalist('reloadFooter',[
+            {code : "汇总", name: 'name'}
+        ]);
+    });
+
+</script>
+<body>
+    <div id="dl"></div>
+</body>
+</html>

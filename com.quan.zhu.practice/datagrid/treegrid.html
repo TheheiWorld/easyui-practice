@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Treegrid</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#tt').treegrid({
+            url:'datatree.json',
+            fitColumns : true,
+            idField:'id',
+            scrollbarSize: 0,
+            treeField:'name',
+            animate : true,
+//            lines : true,
+            columns:[[
+                {field: 'id', title: '', width: 100, checkbox : true},
+                {title:'Task Name',field:'name',width:180,align:'center', editor : 'textbox'},
+                {field:'persons',title:'Persons',width:60,align:'center'},
+                {field:'begin',title:'Begin Date',width:80,align:'center'},
+                {field:'end',title:'End Date',width:80,align:'center'}
+            ]],
+            onClickCell : function (field, row) {
+            }
+        });
+    });
+
+    var editingId;
+    function edit(){
+        if (editingId != undefined){
+            $('#tt').treegrid('select', editingId);
+            return;
+        }
+        var row = $('#tt').treegrid('getSelected');
+        if (row){
+            editingId = row.id
+            $('#tt').treegrid('beginEdit', editingId);
+        }
+    }
+
+    function save(){
+        if (editingId != undefined){
+            var t = $('#tt');
+            t.treegrid('endEdit', editingId);
+            editingId = undefined;
+            var persons = 0;
+            var rows = t.treegrid('getChildren');
+            for(var i=0; i<rows.length; i++){
+                var p = parseInt(rows[i].persons);
+                if (!isNaN(p)){
+                    persons += p;
+                }
+            }
+            var frow = t.treegrid('getFooterRows')[0];
+            frow.persons = persons;
+            t.treegrid('reloadFooter');
+        }
+    }
+
+</script>
+<body>
+    <table id="tt" style="width:600px;height:400px"></table>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="edit()">Edit</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()">Save</a>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Propertygrid</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#pg').propertygrid({
+            url : "property.json",
+            showGroup: true,
+            scrollbarSize: 0,
+            groupFormatter : function (group, rows) {
+                return group + ' - <span style="color:red">' + rows.length + ' rows</span>';            }
+        });
+
+//        var row = {
+//            name:'AddName',
+//            value:'',
+//            group:'Marketing Settings',
+//            editor:'text'
+//        };
+//        $('#pg').propertygrid('appendRow',row);
+//        $('#pg').propertygrid('appendRow',row);
+//        $('#pg').propertygrid('appendRow',row);
+//        $('#pg').propertygrid('appendRow',row);
+//        $('#pg').propertygrid('appendRow',row);
+    })
+
+    function get() {
+        var data = $('#pg').propertygrid('getData');
+        console.log(data);
+    }
+
+</script>
+<body>
+    <table id="pg" style="width:400px"></table>
+    <button onclick="get()">get Data</button>
+</body>
+</html>
