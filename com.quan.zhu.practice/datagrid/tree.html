@@ -13,7 +13,25 @@
 
     $(document).ready(function () {
         $('#tree').tree({
-            url:'tree.json',
+//            url:'tree.json',
+            data : [{
+                "id": 1,
+                "text": "Node 1",
+                "iconCls":"icon-save",
+                "state": "closed",
+                "children": [{
+                    "id": 11,
+                    "text": "Node 11"
+                },{
+                    "id": 12,
+                    "text": "Node 12"
+                }]
+            },{
+                "id": 2,
+                "text": "Node 2",
+                "state": "open",
+                "checked" : true
+            }],
             animate : true,
             onlyLeafCheck : false,
             lines : true,

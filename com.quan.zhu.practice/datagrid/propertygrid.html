@@ -13,7 +13,19 @@
 
     $(document).ready(function () {
         $('#pg').propertygrid({
-            url : "property.json",
+            data :[
+                {"name":"Name","value":"Bill Smith","group":"ID Settings","editor":"text"},
+                {"name":"Address","value":"","group":"ID Settings","editor":"text"},
+                {"name":"SSN","value":"123-456-7890","group":"ID Settings","editor":"text"},
+                {"name":"Email","value":"bill@gmail.com","group":"Marketing Settings","editor":{
+                    "type":"validatebox",
+                    "options":{
+                        "validType":"email"
+                    }
+                }}
+            ]
+            ,
+//            url : "property.json",
             showGroup: true,
             scrollbarSize: 0,
             groupFormatter : function (group, rows) {
